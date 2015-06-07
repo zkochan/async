@@ -1,4 +1,4 @@
-var async = require("../");
+var async;
 var assert = require("assert");
 
 function isBrowser() {
@@ -6,7 +6,12 @@ function isBrowser() {
         (process + "" !== "[object process]"); // browserify
 }
 
+
 suite("setImmediate", function () {
+
+  suiteSetup(function () {
+    async = require("../");
+  });
 
   suiteSetup(function (done) {
     setTimeout(done, 500);
@@ -47,7 +52,7 @@ suite("setImmediate", function () {
 
     test("fast deferral (browser)", function (done) {
       /* global performance */
-      if (typeof performance === "undefined") {
+      if (typeof performance === "undefined" || !performance.now) {
         console.log("no high resolution timers in this browser");
         return done();
       }
