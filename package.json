@@ -24,10 +24,12 @@
     "jshint": "~2.7.0",
     "lodash": ">=2.4.1",
     "mkdirp": "~0.5.1",
+    "mocha": "~2.2.5",
     "nodeunit": ">0.0.0",
     "nyc": "^2.1.0",
     "uglify-js": "1.2.x",
-    "yargs": "~3.9.1"
+    "yargs": "~3.9.1",
+    "zuul": "~3.0.0"
   },
   "jam": {
     "main": "lib/async.js",

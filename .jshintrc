@@ -20,6 +20,12 @@
     "browser": true,
     "node": true,
     "globals": {
-        "define": true
+        "define": true,
+        "suite": true,
+        "test": true,
+        "suiteSetup": true,
+        "setup": true,
+        "suiteTeardown": true,
+        "teardown": true
     }
 }

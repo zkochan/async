@@ -1,0 +1,12 @@
+ui: mocha-tdd
+browsers:
+  - name: chrome
+    version: latest
+    platform: Windows 2012
+  - name: safari
+    version: latest
+  - name: firefox
+    version: latest
+    platform: Windows 2012
+  - name: ie
+    version: 8..latest
