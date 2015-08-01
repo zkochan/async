@@ -1353,8 +1353,7 @@ exports['forEachOf empty object'] = function(test){
         test.ok(false, 'iterator should not be called');
         callback();
     }, function(err) {
-        if (err) throw err;
-        test.ok(true, 'should call callback');
+        test.same(err, null, 'should call callback with err');
     });
     setTimeout(test.done, 25);
 };
@@ -1365,8 +1364,7 @@ exports['forEachOf empty array'] = function(test){
         test.ok(false, 'iterator should not be called');
         callback();
     }, function(err) {
-        if (err) throw err;
-        test.ok(true, 'should call callback');
+        test.same(err, null, 'should call callback with err');
     });
     setTimeout(test.done, 25);
 };
@@ -1765,6 +1763,7 @@ exports['map'] = {
     async.map(a, function(x, callback){
         callback(null, x*2);
     }, function(err, results){
+        console.log(results, [2, 4, 6]);
         test.same(results, [2,4,6]);
         test.same(a, [1,2,3]);
         test.done();
@@ -2034,6 +2033,7 @@ exports['filter'] = function(test){
 exports['filter original untouched'] = function(test){
     var a = [3,1,2];
     async.filter(a, function(x, callback){
+        console.log(x);
         callback(x % 2);
     }, function(results){
         test.same(results, [3,1]);
@@ -2071,10 +2071,11 @@ exports['reject original untouched'] = function(test){
     test.expect(2);
     var a = [3,1,2];
     async.reject(a, function(x, callback){
+        console.log(x);
         callback(x % 2);
     }, function(results){
         test.same(results, [2]);
-        test.same(a, [3,1,2]);
+        test.same(a, [3, 1, 2]);
         test.done();
     });
 };
